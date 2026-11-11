@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atomic Typing — Type faster. Talk smarter.</title>
-<link rel="icon" href="https://atomictypingchat.com/favicon.ico" type="image/x-icon">
+<meta name="theme-color" content="#08090d">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<link rel="shortcut icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body class="auth-required">
@@ -18,11 +20,14 @@
     <div class="auth-provider-row">
       <button type="button" class="btn auth-provider auth-provider-google" id="googleSignInBtn"><span class="auth-logo" aria-hidden="true">G</span>Continue with Google</button>
     </div>
-    <div class="auth-divider"><span>or continue with email😀</span></div>
+    <div class="auth-divider"><span>email accounts with username sign-in</span></div>
     <form id="authGateForm">
       <div class="field" id="authNameField"><label for="authName">DISPLAY NAME</label><input id="authName" name="name" maxlength="60" autocomplete="name" placeholder="e.g. Alex" required></div>
-      <div class="field"><label for="authEmail">EMAIL</label><input id="authEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
-      <div class="field"><label for="authPassword">PASSWORD</label><input id="authPassword" name="password" type="password" minlength="8" autocomplete="new-password" placeholder="At least 8 characters" required></div>
+      <div class="field" id="authUsernameField"><label id="authUsernameLabel" for="authUsername">@USERNAME</label><input id="authUsername" name="username" type="text" minlength="3" maxlength="25" autocomplete="username" placeholder="@alex_typist" required></div>
+      <div class="field" id="authEmailField"><label for="authEmail">EMAIL</label><input id="authEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="authPassword">PASSWORD</label><input id="authPassword" name="password" type="password" minlength="12" autocomplete="new-password" placeholder="12+ chars with upper/lowercase, number & symbol" required></div>
+      <div class="field" id="authPasswordConfirmField"><label for="authPasswordConfirm">CONFIRM PASSWORD</label><input id="authPasswordConfirm" name="passwordConfirm" type="password" minlength="12" autocomplete="new-password" placeholder="Re-enter your password" required></div>
+      <p class="muted" id="authSecuritySteps">Atomic PSD checks password strength and asks you to verify your email before first sign-in.</p>
       <p class="auth-error" id="authGateError" role="status" aria-live="polite"></p>
       <button class="btn primary auth-submit" id="authGateSubmit" type="submit">Create account</button>
     </form>
@@ -37,7 +42,7 @@
 <header class="topbar">
   <div class="brand"><div class="logo brand-mark" aria-label="Atomic Typing logo"><svg viewBox="0 0 100 100" role="img" aria-hidden="true"><rect x="6" y="6" width="88" height="88" rx="20" fill="#090b10" stroke="#2f364d"/><path d="M18 68l16-36h12l16 36H56l-4-10H38l-4 10H18zm20-18h8l-3.5-9L38 50z" fill="#ff4057"/><path d="M58 32h12v18h14v10H58V32z" fill="#4aa8ff"/><path d="M56 68l16-36h12l16 36H90l-4-10H72l-4 10H56zm20-18h8l-3.6-9-4.4 9z" fill="#ff4057"/></svg></div><div>Atomic Typing<small>TYPE • CHAT • LEVEL UP</small></div></div>
   <nav class="nav" aria-label="Main navigation">
-    <button class="active" data-page="home">Home</button><button data-page="lessons">Lessons</button><button data-page="games">Games</button><button data-page="tests">Tests</button><button data-page="classes">Classes</button><button data-page="leaderboard">Leaderboards</button><button data-page="themes">Themes</button><button data-page="security" data-admin-only style="display:none">Atomic PSD review</button>
+    <button class="active" data-page="home">Home</button><button data-page="lessons">Lessons</button><button data-page="games">Games</button><button data-page="tests">Tests</button><button data-page="progress">Progress</button><button data-page="classes">Classes</button><button data-page="leaderboard">Leaderboards</button><button data-page="themes">Themes</button><button data-page="security" data-admin-only style="display:none">Atomic PSD review</button>
   </nav>
   <div class="account-actions"><button class="ghost" id="signInBtn">Sign in</button><button class="btn primary" id="accountBtn">Create account ↗</button></div>
 </header>
@@ -57,7 +62,7 @@
         <span class="sponsor-label">Sponsored by</span>
         <div class="sponsor-links">
           <a href="https://chatterchap.netlify.app" target="_blank" rel="noreferrer"><span class="brand-badge brand-badge-thunder" aria-hidden="true"><svg viewBox="0 0 100 100"><rect x="6" y="6" width="88" height="88" rx="16" fill="#090b10"/><path d="M39 12 18 53h18l-9 35 45-48H56l12-28H39Z" fill="#8b5cf6" transform="rotate(-8 50 50)"/></svg></span>chatterchap.netlify.app</a>
-          <a href="https://v0-janisland.app" target="_blank" rel="noreferrer"><span class="brand-badge brand-badge-v0" aria-hidden="true"><svg viewBox="0 0 100 100"><rect x="6" y="6" width="88" height="88" rx="16" fill="#05070b"/><path d="M24 28h16l-9 44h-14l9-44Zm18 0h18l-8 44H34l8-44Zm22 0h16v44H78l-14-44Z" fill="#ffffff"/></svg></span>v0-janisland.app</a>
+          <a href="https://v0-janisland.vercel.app" target="_blank" rel="noreferrer"><span class="brand-badge brand-badge-v0" aria-hidden="true"><svg viewBox="0 0 100 100"><rect x="6" y="6" width="88" height="88" rx="16" fill="#05070b"/><path d="M24 28h16l-9 44h-14l9-44Zm18 0h18l-8 44H34l8-44Zm22 0h16v44H78l-14-44Z" fill="#ffffff"/></svg></span>v0-janisland.app</a>
           <a href="https://youtube.com/@ATAFAtomicTech" target="_blank" rel="noreferrer"><span class="yt-pill" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.9 2.9 0 0 0-2-2.1C17.9 4.6 12 4.6 12 4.6s-5.9 0-7.6.5A2.9 2.9 0 0 0 2.4 7.2C2 9 2 12 2 12s0 3 .4 4.8a2.9 2.9 0 0 0 2 2.1c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.9 2.9 0 0 0 2-2.1c.4-1.8.4-4.8.4-4.8s0-3-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" fill="currentColor"/></svg></span>@ATAFAtomicTech</a>
           <a href="https://youtube.com/@ACAFAtomic1" target="_blank" rel="noreferrer"><span class="yt-pill" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.9 2.9 0 0 0-2-2.1C17.9 4.6 12 4.6 12 4.6s-5.9 0-7.6.5A2.9 2.9 0 0 0 2.4 7.2C2 9 2 12 2 12s0 3 .4 4.8a2.9 2.9 0 0 0 2 2.1c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.9 2.9 0 0 0 2-2.1c.4-1.8.4-4.8.4-4.8s0-3-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" fill="currentColor"/></svg></span>@ACAFAtomic1</a>
         </div>
@@ -71,7 +76,7 @@
     <div class="psd-promo-copy">
       <div class="eyebrow"><span class="dot"></span> ATOMIC PSD · PRIMARY SECURITY DRILL</div>
       <h2 id="psdPromoTitle">ChatterChap chat, with safer classroom conversations.</h2>
-      <p>Atomic PSD applies server-side checks to classroom chat, slows message bursts, flags repeated or unauthorized activity, and gives trusted admins a review queue. ChatterChap classroom chat stays available to approved class members.</p>
+      <p>Atomic PSD logs blocked unauthorized chat access for admin review. Normal message bursts, including six chats in 30 seconds, and repeated messages are allowed. ChatterChap classroom chat stays available to approved class members.</p>
       <p class="psd-promo-note">Security signals can be wrong. Reports are reviewed by an admin; this does not automatically ban accounts or guarantee protection from every attack.</p>
     </div>
   </section>
@@ -92,8 +97,9 @@
         <div class="character-header">
           <span class="avatar-badge" id="characterLevelBadge">Level 1</span>
           <span class="theme-chip" id="characterThemeName">ATAF Midnight</span>
+          <button class="btn small character-picker-button" type="button" data-character-picker>Change character</button>
         </div>
-        <h3 id="characterName">Nova Explorer</h3>
+        <h3 id="characterName">ATAFBot</h3>
         <p id="characterStatus">Build accuracy and speed to power up your typing journey.</p>
         <div class="xp-bar"><span id="xpBarFill"></span></div>
         <div class="xp-meta"><span id="xpMetaText">0 / 150 XP</span><span id="xpGoalText">Next level in 150 XP</span></div>
@@ -104,7 +110,7 @@
     <div class="academy-welcome"><div class="big-icon">🎓</div><div><h3>Your typing academy</h3><p>Small steps today. Big skills tomorrow.</p></div></div>
     <div class="academy-mini"><small>CURRICULUM</small><strong>9 grades</strong><span>Beginner, Intermediate + Master paths</span></div>
     <div class="academy-mini"><small>LEARN YOUR WAY</small><strong>5,400 lessons</strong><span>600 lessons per grade · 10 units of 20 in each path</span></div>
-    <div class="academy-mini"><small>PLAY & IMPROVE</small><strong>12 games</strong><span>Earn points while learning</span></div>
+    <div class="academy-mini"><small>PLAY & IMPROVE</small><strong>13 games</strong><span>Earn points while learning</span></div>
   </div>
   <div class="curriculum-banner"><div><h3>📚 A guided path from beginner to confident typist</h3><p>Progress through Beginner, Intermediate, and Master across grades 1–9, with ten 20-lesson units in every path and a one-minute final test.</p></div><div class="curriculum-badges"><span>01 · Beginner</span><span>02 · Intermediate</span><span>03 · Master</span></div></div>
   <div class="section-head"><div><h2>Choose your grade</h2><p>Every level has a clear next step.</p></div></div>
@@ -135,27 +141,41 @@
 
 <section class="dashboard" id="page-lessons">
   <div class="page-title"><div><h2>⌨️ Lessons & practice</h2><p>Build good habits, one key at a time.</p></div><div class="pill" id="xpPill">⭐ 0 XP</div></div>
-  <div class="lesson-layout"><aside class="lesson-nav" id="lessonNav"></aside><div class="panel lesson-box" id="lessonContent"></div></div>
+  <section class="writing-lab panel" aria-labelledby="writingLabTitle">
+    <div><h3 id="writingLabTitle">✍️ Real-world writing lab</h3><p>Practice useful work skills, learn MLA basics, or start a story. No timer—focus on clear, accurate writing.</p></div>
+    <div class="writing-lab-nav" role="group" aria-label="Writing activities">
+      <button class="btn small" type="button" data-writing-mode="career">💼 Career typing</button>
+      <button class="btn small" type="button" data-writing-mode="mla">📚 MLA learning</button>
+      <button class="btn small" type="button" data-writing-mode="stories">📖 Write a story</button>
+      <button class="btn small" type="button" data-writing-mode="lessons">⌨️ Lessons</button>
+    </div>
+    <div id="writingStudio" hidden></div>
+  </section>
+  <div class="lesson-layout" id="lessonLayout"><aside class="lesson-nav" id="lessonNav"></aside><div class="panel lesson-box" id="lessonContent"></div></div>
 </section>
 <section class="dashboard" id="page-games">
-  <div class="page-title"><div><h2>🎮 Typing arcade</h2><p>Play for fun, earn XP, and climb the game leaderboards.</p></div><span class="pill">9 GAMES · PRACTICE & PLAY</span></div>
+  <div class="page-title"><div><h2>🎮 Typing arcade</h2><p>Choose a world, type to play, and watch your score grow.</p></div><span class="pill">13 GAMES · PRACTICE & PLAY</span></div>
   <div class="game-grid">
+    <div class="game-card" data-game-key="race"><div class="game-art">🏁</div><h3>Keystroke Grand Prix</h3><p>See the full race text and compete against CPUs, classmates, or an anonymous public rival’s best-time ghost. Beat a human rival to unlock kart skins. Public races have no chat or contact exchange.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><div class="race-mode-buttons"><button class="btn primary" data-race-mode="cpu">Race CPUs</button><button class="btn" data-race-mode="class">Challenge friends/classmates</button><button class="btn" data-race-mode="public">Challenge a public rival</button></div><label class="race-public-opt-in"><input id="publicRaceConsent" type="checkbox"> Share my CPU race best time anonymously to create public rivals</label></div>
     <div class="game-card" data-game-key="rocket"><div class="game-art">🚀</div><h3>Rocket Words</h3><p>Type each word to power your rocket through space. How far can you go?</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="rocket">Launch game →</button></div>
-    <div class="game-card" data-game-key="bubble"><div class="game-art">🫧</div><h3>Bubble Pop</h3><p>Pop the word bubbles before they float away. Accuracy is your superpower.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="bubble">Pop bubbles →</button></div>
-    <div class="game-card" data-game-key="dragon"><div class="game-art">🐉</div><h3>Dragon Dash</h3><p>Race a friendly dragon through a magical forest with every correct word.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="dragon">Start racing →</button></div>
-    <div class="game-card" data-game-key="rain"><div class="game-art">🌧️</div><h3>Letter Rain</h3><p>Catch the falling letters by typing them in the right order.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="rain">Catch letters →</button></div>
-    <div class="game-card" data-game-key="wizard"><div class="game-art">🧠</div><h3>Word Wizard</h3><p>Spell your way through quick rounds and unlock your typing magic.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="wizard">Cast a spell →</button></div>
-    <div class="game-card" data-game-key="turbo"><div class="game-art">🏎️</div><h3>Turbo Type</h3><p>A fast-paced typing sprint. Keep your streak alive and beat your record.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="turbo">Start engine →</button></div>
-    <div class="game-card" data-game-key="meteor"><div class="game-art">☄️</div><h3>Meteor Match</h3><p>Chase glowing meteors while keeping your typing rhythm clean.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="meteor">Follow the trail →</button></div>
-    <div class="game-card" data-game-key="treasure"><div class="game-art">💎</div><h3>Treasure Tap</h3><p>Collect gems by typing the correct word before the clock runs out.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="treasure">Seek treasure →</button></div>
-    <div class="game-card" data-game-key="sky"><div class="game-art">✈️</div><h3>Sky Sprint</h3><p>Fly through a clear sky by keeping your motion smooth and fast.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="sky">Take flight →</button></div>
+    <div class="game-card" data-game-key="bubble"><div class="game-art">🫧</div><h3>Bubble Pop</h3><p>Help your theme character pop each rising word bubble. Three lives; 30 seconds to save them!</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="bubble">Pop bubbles →</button></div>
+    <div class="game-card" data-game-key="dragon"><div class="game-art">🐉</div><h3>Dragon Dash</h3><p>Charge your dragon’s fire with accurate words and build a blazing streak.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="dragon">Start racing →</button></div>
+    <div class="game-card" data-game-key="rain"><div class="game-art">🌧️</div><h3>Letter Rain</h3><p>Catch each falling word before it reaches the ground and clear the storm.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="rain">Catch letters →</button></div>
+    <div class="game-card" data-game-key="wizard"><div class="game-art">🧠</div><h3>Word Wizard</h3><p>Cast word spells and keep your magic streak alive to power up each spell.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="wizard">Cast a spell →</button></div>
+    <div class="game-card" data-game-key="turbo"><div class="game-art">🏎️</div><h3>Turbo Type</h3><p>Race across the course and pass a speed checkpoint every three words.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="turbo">Start engine →</button></div>
+    <div class="game-card" data-game-key="meteor"><div class="game-art">☄️</div><h3>Meteor Match</h3><p>Decode incoming meteor words and deflect them before they reach your ship.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="meteor">Follow the trail →</button></div>
+    <div class="game-card" data-game-key="treasure"><div class="game-art">💎</div><h3>Treasure Tap</h3><p>Find three word keys to open a treasure chest, then search for the next one.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="treasure">Seek treasure →</button></div>
+    <div class="game-card" data-game-key="sky"><div class="game-art">✈️</div><h3>Sky Sprint</h3><p>Steer through clear-air gates and keep your plane away from storm clouds.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="sky">Take flight →</button></div>
+    <div class="game-card" data-game-key="garden"><div class="game-art">🌼</div><h3>Word Garden</h3><p>Plant seeds with words and watch your garden grow from sprouts to blooms.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="garden">Plant a word →</button></div>
+    <div class="game-card" data-game-key="ocean"><div class="game-art">🐬</div><h3>Ocean Explorer</h3><p>Swim with a dolphin companion, collect pearls, and explore the reef.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="ocean">Dive in →</button></div>
+    <div class="game-card" data-game-key="cipher"><div class="game-art">🔐</div><h3>Cipher Quest</h3><p>Unscramble each secret word and crack three codes to unlock the vault.</p><div class="muted game-best" style="font-size:12px;margin-bottom:12px">Best: 0 pts</div><button class="btn primary" data-game-start="cipher">Decode mission →</button></div>
   </div>
   <div class="toolbar" style="margin:18px 0 12px; gap:12px; align-items:end; flex-wrap:wrap;">
-    <label class="field" style="min-width:180px"><span>Game</span><select id="gameSelector"><option value="rocket">🚀 Rocket Words</option><option value="bubble">🫧 Bubble Pop</option><option value="dragon">🐉 Dragon Dash</option><option value="rain">🌧️ Letter Rain</option><option value="wizard">🧠 Word Wizard</option><option value="turbo">🏎️ Turbo Type</option><option value="meteor">☄️ Meteor Match</option><option value="treasure">💎 Treasure Tap</option><option value="sky">✈️ Sky Sprint</option><option value="garden">🌼 Word Garden</option><option value="ocean">🐬 Ocean Explorer</option><option value="cipher">🔐 Cipher Quest</option></select></label>
+    <label class="field" style="min-width:180px"><span>Game</span><select id="gameSelector"><option value="race">🏁 Keystroke Grand Prix</option><option value="rocket">🚀 Rocket Words</option><option value="bubble">🫧 Bubble Pop</option><option value="dragon">🐉 Dragon Dash</option><option value="rain">🌧️ Letter Rain</option><option value="wizard">🧠 Word Wizard</option><option value="turbo">🏎️ Turbo Type</option><option value="meteor">☄️ Meteor Match</option><option value="treasure">💎 Treasure Tap</option><option value="sky">✈️ Sky Sprint</option><option value="garden">🌼 Word Garden</option><option value="ocean">🐬 Ocean Explorer</option><option value="cipher">🔐 Cipher Quest</option></select></label>
     <label class="field" style="min-width:180px"><span>Board</span><select id="gameBoardSelector"><option value="global">Global</option><option value="class">Class</option></select></label>
   </div>
   <div class="section-head"><div><h2>Game leaderboards</h2><p>Class rankings are separate from the global arcade rankings.</p></div><button class="btn" data-go="leaderboard">View leaderboards →</button></div>
-  <div class="content-grid"><div class="panel"><h3>🌎 Global arcade</h3><p class="panel-sub">Sample scores until online leaderboard sync is connected</p><div id="gameGlobalBoard"></div></div><div class="panel"><h3>🏫 Your class arcade</h3><p class="panel-sub">Class-only game points</p><div id="gameClassBoard"></div></div></div>
+  <div class="content-grid"><div class="panel"><h3>🌎 Global arcade</h3><p id="gameGlobalPeriod" class="panel-sub">Weekly game points · resets Monday UTC</p><div id="gameGlobalBoard"></div></div><div class="panel"><h3>🏫 Your class arcade</h3><p id="gameClassPeriod" class="panel-sub">Weekly class game points · resets Monday UTC</p><div id="gameClassBoard"></div></div></div>
 </section>
 <section class="dashboard" id="page-tests">
   <div class="page-title"><div><h2>🏁 Typing speed test</h2><p>Find your words per minute (WPM), accuracy, and endurance.</p></div><span class="pill">TIMED TEST MODE</span></div>
@@ -169,6 +189,10 @@
     <p class="muted" id="testMessage">Your timer starts when you type the first character. Dictation mode shows a prompt for listening and typing practice.</p>
   </div>
 </section>
+<section class="dashboard" id="page-progress">
+  <div class="page-title"><div><h2>📈 Your progress</h2><p>See your practice rhythm, course progress, and achievements.</p></div><span class="pill" id="progressLevelBadge">Level 1</span></div>
+  <div id="progressDashboard"></div>
+</section>
 <section class="dashboard" id="page-classes">
   <div class="page-title"><div><h2>🏫 Classrooms</h2><p>Teachers lead the way. Students join with permission and level up together.</p></div><button class="btn primary" id="createClassBtn">＋ Create a class</button></div>
   <div class="notice" id="classroomRoleNotice">Students can join a class using the code provided by their teacher. Teachers can create and manage their own classrooms.</div>
@@ -177,20 +201,77 @@
   <div class="toolbar"><button class="btn primary" id="createAssignmentBtn">＋ Manage class assignments</button></div>
   <div id="assignmentsList" class="cards"></div>
   <div id="classesList" class="cards"></div>
-  <div class="section-head"><div><h2>Class leaderboard</h2><p>Points earned from lessons, tests, and practice.</p></div></div><div class="panel"><div id="classLeaderboard"></div></div>
+  <div class="section-head"><div><h2>Class leaderboard</h2><p>Typing points earned this week from lessons, tests, and games.</p></div></div><div class="panel"><p id="classLeaderboardPeriod" class="panel-sub">Weekly scores reset each Monday (UTC).</p><div id="classLeaderboard"></div></div>
 </section>
 <section class="dashboard" id="page-security">
-  <div class="page-title"><div><h2>🛡️ Atomic PSD review queue</h2><p>Review server-generated classroom chat signals. A signal is not proof of malicious intent.</p></div><button class="btn" id="refreshSecurityCases">Refresh queue</button></div>
-  <div class="notice">Atomic PSD currently flags rapid message bursts, repeated messages, and attempts to chat outside an approved classroom. It does not automatically ban users.</div>
-  <div id="securityCasesList" class="cards" style="margin-top:16px"></div>
+  <div class="admin-app">
+    <aside class="admin-rail">
+      <div class="admin-rail-heading"><span class="admin-rail-logo">A</span><span><b>Atomic Admin</b><small>CONTROL CENTER</small></span></div>
+      <div class="admin-rail-label">WORKSPACE</div>
+      <nav class="admin-rail-nav" aria-label="Admin workspace">
+        <button class="selected" type="button" data-admin-view="overview"><span>⌂</span>Home</button>
+        <button type="button" data-admin-view="awards"><span>✦</span>Certificates</button>
+        <button type="button" data-admin-view="security"><span>⛨</span>Atomic PSD <i id="adminSecurityBadge">0</i></button>
+        <button type="button" data-admin-view="terminal"><span>⌘</span>Command Terminal</button>
+      </nav>
+      <div class="admin-rail-footer"><span class="admin-live-dot"></span><span><b>Admin access</b><small id="adminRoleStatus">Role verified by profile</small></span></div>
+    </aside>
+    <div class="admin-main">
+      <header class="admin-topline">
+        <div class="admin-breadcrumb">Workspace <span>/</span> <b id="adminCurrentView">Home</b></div>
+        <div class="admin-heading-actions"><span class="admin-identity"><span>🛡️</span><span><small>ADMINISTRATOR</small><b id="adminIdentity">Trusted administrator</b></span></span><button class="btn" id="refreshAdminData" type="button">↻ Refresh</button></div>
+      </header>
+      <div id="adminPreviewNotice" class="notice admin-preview-notice" hidden></div>
+      <section class="admin-view active" id="adminViewOverview">
+        <div class="admin-page-heading"><div><div class="admin-kicker"><span class="admin-live-dot"></span> ADMINISTRATION</div><h2>Home</h2><p>Review account safety and manage admin tools without viewing classrooms.</p></div></div>
+        <div class="admin-metrics">
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-purple">♙</span><div><small>STUDENT ACCOUNTS</small><strong id="adminOverviewStudentCount">—</strong><span>Registered learners</span></div></article>
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-red">⛨</span><div><small>OPEN SECURITY SIGNALS</small><strong id="adminOpenCount">—</strong><span>Awaiting admin review</span></div></article>
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-green">✓</span><div><small>ADMIN ACTIONS</small><strong>Reviewed</strong><span>Require explicit confirmation</span></div></article>
+        </div>
+        <div class="admin-home-grid">
+          <section class="admin-home-card"><div class="admin-section-kicker">GET STARTED</div><h3>Admin tools</h3><p>Review security reports, issue weekly leaderboard certificates, or run a safe diagnostic.</p><div class="admin-shortcuts"><button type="button" data-admin-view="security"><span>⛨</span><b>Review Atomic PSD</b><small>Check suspicious activity and system reports</small></button><button type="button" data-admin-view="awards"><span>✦</span><b>Weekly certificates</b><small>Issue certificates to leaderboard winners</small></button><button type="button" data-admin-view="terminal"><span>⌘</span><b>Command Terminal</b><small>Run safe status and bandwidth checks</small></button></div></section>
+          <section class="admin-home-card admin-home-note"><div class="admin-side-icon">🔐</div><div class="admin-section-kicker">SAFE ADMINISTRATION</div><h3>Actions stay accountable</h3><p>Classroom details and classroom awards belong to teachers. Admin account bans require an open access-attempt signal and an explicit confirmation.</p><div class="admin-no-ban">Message repeats and up to six messages in 30 seconds are not security signals.</div></section>
+        </div>
+      </section>
+      <section class="admin-view" id="adminViewAwards">
+        <div class="admin-page-heading"><div><div class="admin-kicker">WEEKLY LEADERBOARD RECOGNITION</div><h2>Certificates</h2><p>Classroom teachers give classroom awards. Admins can issue certificates for the top three from the last completed week.</p></div></div>
+        <section class="admin-home-card"><div class="admin-section-kicker">WEEKLY CERTIFICATES</div><h3>Leaderboard awards</h3><p>Issue certificates across global typing, each game, and class leaderboards without opening classroom records.</p><button class="btn primary" id="adminIssueWeeklyCertificates" type="button">Award last week's certificates</button><p id="adminCertificateStatus" class="muted" role="status"></p><div id="adminCertificateList" class="admin-record-list"></div></section>
+      </section>
+      <section class="admin-view" id="adminViewSecurity">
+        <div class="admin-page-heading"><div><div class="admin-kicker"><span class="admin-live-dot"></span> ATOMIC PSD · SAFETY REVIEW</div><h2>Suspicious activity & system reports</h2><p>Review blocked access attempts and manually submitted breach reports. A signal is not proof of malicious intent.</p></div></div>
+        <div class="admin-metrics admin-security-metrics">
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-red">◉</span><div><small>OPEN SIGNALS</small><strong id="adminSecurityOpenCount">—</strong><span>Awaiting review</span></div></article>
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-blue">⌁</span><div><small>FLAGGED TODAY</small><strong id="adminTodayCount">—</strong><span>Signals created today</span></div></article>
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-green">✓</span><div><small>RESOLVED</small><strong id="adminReviewedCount">—</strong><span>Completed reviews</span></div></article>
+          <article class="admin-metric"><span class="admin-metric-icon admin-metric-purple">◈</span><div><small>PROTECTION</small><strong>Active</strong><span>Server-side checks enabled</span></div></article>
+        </div>
+        <div class="admin-workspace">
+          <section class="admin-queue panel" aria-labelledby="securityQueueTitle">
+            <div class="admin-queue-heading"><div><div class="admin-section-kicker">MONITORING</div><h3 id="securityQueueTitle">Review queue</h3><p>Check context before taking action.</p></div><span class="admin-queue-count" id="adminQueueCount">0 OPEN</span></div>
+            <div class="admin-filter-bar" role="group" aria-label="Filter security signals"><button class="selected" type="button" data-security-filter="all">All reports</button><button type="button" data-security-filter="chat_unauthorized">Blocked access</button><button type="button" data-security-filter="system_breach">System breach reports</button></div>
+            <div id="securityCasesList" class="admin-signal-list" aria-live="polite"></div>
+          </section>
+          <aside class="admin-sidebar"><section class="admin-side-card"><div class="admin-side-icon">🧭</div><div class="admin-section-kicker">REVIEW GUIDANCE</div><h3>Signals need context</h3><ul><li>Six messages in 30 seconds are allowed.</li><li>Repeated messages are allowed.</li><li>Blocked unauthorized chat access is logged.</li><li>System breach reports are submitted manually.</li></ul><div class="admin-no-ban">No automatic bans: administrators choose Ban account or Mark false positive.</div></section></aside>
+        </div>
+      </section>
+      <section class="admin-view" id="adminViewTerminal">
+        <div class="admin-page-heading"><div><div class="admin-kicker">SAFE ADMIN DIAGNOSTICS</div><h2>Command Terminal</h2><p>Only the listed, allowlisted admin commands run here. This is not a shell and cannot execute arbitrary commands.</p></div></div>
+        <div class="admin-two-column">
+          <section class="admin-home-card"><div class="admin-section-kicker">AVAILABLE COMMANDS</div><h3>Security helpers</h3><ul class="admin-command-list"><li><code>help</code><span>List supported commands</span></li><li><code>status</code><span>Check admin session and backend configuration</span></li><li><code>security queue</code><span>Refresh open Atomic PSD reports</span></li><li><code>bandwidth test</code><span>Estimate download speed to this website</span></li><li><code>report breach &lt;summary&gt;</code><span>Submit a manual system-breach report</span></li></ul></section>
+          <section class="admin-home-card"><div class="admin-section-kicker">COMMAND INPUT</div><h3>Run a safe command</h3><form id="adminCommandForm"><label class="sr-only" for="adminCommandInput">Command</label><input id="adminCommandInput" type="text" maxlength="320" autocomplete="off" placeholder="Type help"><button class="btn primary" type="submit">Run</button></form><pre id="adminCommandOutput" class="admin-command-output" role="status" aria-live="polite">Type help to see the available commands.</pre></section>
+        </div>
+      </section>
+    </div>
+  </div>
 </section>
 <section class="dashboard" id="page-leaderboard">
-  <div class="page-title"><div><h2>🏆 Leaderboards</h2><p>Celebrate effort, streaks, and personal bests.</p></div><div class="pill">UPDATED IN THIS DEMO</div></div>
+  <div class="page-title"><div><h2>🏆 Leaderboards</h2><p>Celebrate effort, streaks, and personal bests.</p></div><div class="pill">WEEKLY · RESETS MONDAY UTC</div></div>
   <div class="toolbar"><button class="btn selected" data-board="global">Global points</button><button class="btn" data-board="class">Class points</button><button class="btn" data-board="games">Global game points</button><button class="btn" data-board="classgames">Class game points</button></div>
-  <div class="panel"><div id="mainLeaderboard"></div></div>
+  <div class="panel"><p id="mainLeaderboardPeriod" class="panel-sub">Weekly scores reset each Monday (UTC).</p><div id="mainLeaderboard"></div></div>
 </section>
 <section class="dashboard" id="page-themes">
-  <div class="page-title"><div><h2>🎨 Make it yours</h2><p>Choose a vibe and meet your typing guide.</p></div><span class="pill">10 THEMES</span></div>
+  <div class="page-title"><div><h2>🎨 Make it yours</h2><p>Choose a character theme and meet your typing guide.</p></div><div class="toolbar"><button class="btn small primary" type="button" data-character-picker>Choose XP character</button><span class="pill">12 THEMES</span></div></div>
   <div class="theme-grid">
     <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#08090d,#ff4057,#4aa8ff)"></div><b>ATAF Midnight</b><small>Classic black, red & blue · Meet ATAFBot</small><div style="margin-top:13px"><button class="btn small" data-theme-select="">Use theme</button></div></div>
     <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#06131b,#2dd4bf,#60a5fa)"></div><b>Ocean Explorer</b><small>Deep sea, teal, and sky blue · Meet Bubbles</small><div style="margin-top:13px"><button class="btn small" data-theme-select="ocean">Use theme</button></div></div>
@@ -202,6 +283,8 @@
     <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#1e0b0d,#ffb703,#fb8500)"></div><b>Sunrise Sprint</b><small>Bright warm sunrise vibes · Meet Zippy</small><div style="margin-top:13px"><button class="btn small" data-theme-select="sunrise">Use theme</button></div></div>
     <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#08181a,#52b788,#74c69d)"></div><b>Aurora Drift</b><small>Mint green and cool aurora glow · Meet Lumi</small><div style="margin-top:13px"><button class="btn small" data-theme-select="aurora">Use theme</button></div></div>
     <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#120b29,#8b5cf6,#f472b6)"></div><b>Violet Orbit</b><small>High-energy purple and cosmic notes · Meet Pixel</small><div style="margin-top:13px"><button class="btn small" data-theme-select="violet">Use theme</button></div></div>
+    <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#09251b,#43b86b,#c9ef74)"></div><b>Typing Frogs</b><small>Pond greens and lily-pad calm · Meet Freddy the Frog</small><div style="margin-top:13px"><button class="btn small" data-theme-select="frogs">Use theme</button></div></div>
+    <div class="theme-card"><div class="theme-swatch" style="background:linear-gradient(135deg,#102542,#56b4e9,#ffe08a)"></div><b>Birdies Bird</b><small>Blue-sky colors and sunny notes · Meet Birdie the Bluebird</small><div style="margin-top:13px"><button class="btn small" data-theme-select="birdies">Use theme</button></div></div>
   </div>
 </section>
 </main>
