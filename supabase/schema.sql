@@ -35,7 +35,8 @@ begin
         and lower(btrim(new.email)) in (
           'ayaansh.atomic810@gmail.com',
           'atomic2103@gmail.com',
-          'darsh.jhun@gmail.com'
+          'darsh.jhun@gmail.com',
+          'amol.ayaansh@gmail.com'
         )
       then 'admin'
       else 'student'
@@ -55,7 +56,8 @@ begin
     and lower(btrim(new.email)) in (
       'ayaansh.atomic810@gmail.com',
       'atomic2103@gmail.com',
-      'darsh.jhun@gmail.com'
+      'darsh.jhun@gmail.com',
+      'amol.ayaansh@gmail.com'
     )
   then
     update public.profiles
@@ -65,12 +67,14 @@ begin
     and lower(btrim(old.email)) in (
       'ayaansh.atomic810@gmail.com',
       'atomic2103@gmail.com',
-      'darsh.jhun@gmail.com'
+      'darsh.jhun@gmail.com',
+      'amol.ayaansh@gmail.com'
     )
     and lower(btrim(new.email)) not in (
       'ayaansh.atomic810@gmail.com',
       'atomic2103@gmail.com',
-      'darsh.jhun@gmail.com'
+      'darsh.jhun@gmail.com',
+      'amol.ayaansh@gmail.com'
     )
   then
     update public.profiles
@@ -93,7 +97,8 @@ where p.id=u.id
   and lower(btrim(u.email)) in (
     'ayaansh.atomic810@gmail.com',
     'atomic2103@gmail.com',
-    'darsh.jhun@gmail.com'
+    'darsh.jhun@gmail.com',
+    'amol.ayaansh@gmail.com'
   )
   and p.role is distinct from 'admin';
 
