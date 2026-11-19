@@ -75,7 +75,7 @@
             ><input
               id="authName"
               name="name"
-              maxlength="60"
+              maxlength="100"
               autocomplete="name"
               placeholder="e.g. Alex"
               required
@@ -88,7 +88,7 @@
               name="username"
               type="text"
               minlength="3"
-              maxlength="25"
+              maxlength="100"
               autocomplete="username"
               placeholder="@alex_typist"
               required
@@ -100,6 +100,8 @@
               id="authEmail"
               name="email"
               type="email"
+              minlength="3"
+              maxlength="100"
               autocomplete="email"
               placeholder="you@example.com"
               required
@@ -111,9 +113,9 @@
               id="authPassword"
               name="password"
               type="password"
-              minlength="12"
+              minlength="8"
               autocomplete="new-password"
-              placeholder="12+ chars with upper/lowercase, number & symbol"
+              placeholder="8+ chars with upper/lowercase, number & symbol"
               required
             />
           </div>
