@@ -1,6 +1,7 @@
 # ATAF Typing deployment checklist
 
 ## Before deploying
+
 - [ ] Create a Supabase project.
 - [ ] Replace the two placeholders in `config.js` with the project URL and publishable/anon key.
 - [ ] Run `supabase/schema.sql` in the Supabase SQL Editor.
@@ -18,6 +19,7 @@
 - [ ] Create and verify your first account, then promote that account with `supabase/promote-teacher.example.sql`.
 
 ## Test with two separate accounts
+
 - [ ] Teacher can create a classroom and share the code.
 - [ ] Student can request to join using that code.
 - [ ] Teacher can approve or deny a pending request.
